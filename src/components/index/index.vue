@@ -13,6 +13,9 @@ export default {
     components: {
     'myhead': myhead,
     'myfoot': myfoot
+  },
+  data(){
+    
   }
 }
 </script>
