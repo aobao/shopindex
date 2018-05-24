@@ -86,7 +86,7 @@ export default {
     border-bottom: 1px solid #c1c2cf;
     box-sizing: border-box;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 34px;
     > .headMain{
       width: 855px;
       height: 100%;
