@@ -4,8 +4,9 @@
    <div class="mylist">
 
    </div>
-   <div class="detial">
-       
+   <div class="detail">
+       <div class="left"></div>
+       <div class="right"></div>
    </div>
   </div>  
   <div class="max">
@@ -36,6 +37,20 @@ export default {
         .mylist{
             width: 100%;
             height: 100px;
+        }
+        .detail{
+            width: 100%;
+            position: relative;
+            height: 410px;
+            .left{
+              
+            }
+            .right{
+                width: 675px;
+                height: 410px;
+                right:0;
+                top:0;
+            }
         }
      }
      .max{
