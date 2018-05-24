@@ -50,6 +50,7 @@
         </div>
       </div>
     </header>
+    <div class="box"></div>
   </div>
 </template>
 
@@ -86,7 +87,6 @@
     border-bottom: 1px solid #c1c2cf;
     box-sizing: border-box;
     position: relative;
-    margin-bottom: 34px;
     > .headMain {
       width: 855px;
       height: 100%;
@@ -224,5 +224,10 @@
         }
       }
     }
+  }
+  .box{
+    width:100%;
+    height:34px;
+    background: #efefef;
   }
 </style>
