@@ -12,8 +12,5 @@ export default {
 </script>
 
 <style>
-body{
-  width: 1366px;
-  height: auto;
-}
+
 </style>
