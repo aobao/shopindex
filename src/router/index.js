@@ -10,7 +10,7 @@ import mycenter from '@/components/mycenter/mycenter'
 import pay from '@/components/mypay/pay'
 import myhead from '@/components/common/myhead'
 import myfoot from '@/components/common/myfoot'
-
+import mymain from '@/components/index/mymain'
 Vue.use(Router)
 
 export default new Router({
@@ -66,7 +66,12 @@ export default new Router({
           name:'mybook',
           component:mybook
         },
-       
+        {
+          path:'mymain',
+          name:'myamin',
+          component:mymain
+        }
+
       ]
     },
    
