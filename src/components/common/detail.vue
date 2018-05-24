@@ -2,7 +2,7 @@
 <div class="main">
   <div class="mytopbox">
    <div class="mylist">
-
+     <div class="img"></div>
    </div>
    <div class="detail">
        <div class="left"></div>
