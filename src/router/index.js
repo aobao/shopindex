@@ -19,6 +19,7 @@ export default new Router({
       path: '/',
       name: 'Index',
       component: Index,
+      redirect:'/mymain',
       children:[
         {
           path:'myhead',
@@ -74,6 +75,6 @@ export default new Router({
 
       ]
     },
-   
+
   ]
 })
