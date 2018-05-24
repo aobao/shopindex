@@ -1,7 +1,7 @@
 <template>
    <div>
      <myhead></myhead>
-     <main>ok </main>
+     <router-view></router-view>
      <myfoot></myfoot>
     </div>
 </template>
@@ -15,7 +15,9 @@ export default {
     'myfoot': myfoot
   },
   data(){
-    
+    return{
+
+    }
   }
 }
 </script>
