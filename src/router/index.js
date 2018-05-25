@@ -4,6 +4,7 @@ import Index from '@/components/index/index'
 import All from '@/components/all/allproduct'
 import Detail from '@/components/common/detail'
 import Reglog from '@/components/indexlog/reglog'
+import regist from '@/components/indexlog/regist'
 import mycar from '@/components/mycar/mycar'
 import mybook from '@/components/mybook/mybook'
 import mycenter from '@/components/mycenter/mycenter'
@@ -50,6 +51,11 @@ export default new Router({
           path:'reglog',
           name:'Reglog',
           component:Reglog
+        },
+        {
+          path:'regist',
+          name:'regist',
+          component:regist
         },
         {
           path:'mycar',

@@ -11,15 +11,12 @@
             </div>
             <div class="con">
                 <form  method="post">
-                    <div class="login-top">
-                        <span>WELCOME  LANDING</span>
-                    </div>
                     <div class="cancal">
                         <i class="iconfont icon-quxiao2"></i>
                     </div>
 
                     <div class="con_t">
-                        <span>欢&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;迎&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</span>
+                        <span>欢&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;迎&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</span>
                     </div>
 
                     <div class="user">
@@ -29,7 +26,7 @@
                         <div class="input_font">
                             <h6>账号</h6>
                         </div>
-                        <input type="text" name="user" placeholder="请输入账号" value="">
+                        <input type="text" name="user" placeholder="请输入注册账号" value="">
                         <div class="icon_2"></div>
                     </div>
                     <div class="pass">
@@ -45,13 +42,13 @@
 
                     <div class="button">
                         <div class="registered">
-                            <h3>立即登录</h3>
+                            <h3>立即注册</h3>
                             <h6>REGISTER</h6>
                         </div>
                         <div class="login">
                             <router-link to="">
                                 <span>立即</span>
-                                <span>注册</span>
+                                <span>登录</span>
                             </router-link>
                         </div>
                     </div>
@@ -59,12 +56,11 @@
             </div>
         </div>
     </div>
+
 </template>
 <script>
-
 export default {
-    name:"reglog"
-
+    name:"regist"
 }
 </script>
 <style lang="scss" scoped>
@@ -128,23 +124,6 @@ export default {
                 form{
                     width: 100%;
                     height: 100%;
-                    .login-top{
-                        width: 302px;
-                        height: 33px;
-                        position: absolute;
-                        top: -16.5px;
-                        left: 0;
-                        right: 0;
-                        margin: auto;
-                        background: #b9e6e0;
-                        border-radius: 50px;
-                        text-align: center;
-                        line-height: 33px;
-                        span{
-                            color: #fff;
-                            font-size: 14px;
-                        }
-                    }
                     .cancal{
                         width: 26px;
                         height: 26px;
@@ -164,8 +143,8 @@ export default {
                         height: 64px;
                         line-height: 64px;
                         text-align: center;
+                        /*background: #c6fff8;*/
                         margin-bottom: 6px;
-                        margin-top: 15px;
                         span{
                             font-size: 16px;
                             color: #000;
@@ -178,7 +157,7 @@ export default {
                         box-sizing: border-box;
                         /*background: #cccccc;*/
                         margin-bottom: 32px;
-                        margin-top: 5px;
+                        margin-top: 20px;
                         .input_icon{
                             width: 27px;
                             height: 26px;
@@ -300,4 +279,5 @@ export default {
             }
         }
     }
+
 </style>

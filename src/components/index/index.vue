@@ -2,7 +2,11 @@
    <div>
      <myhead></myhead>
      <router-view></router-view>
-     <myfoot></myfoot>
+
+     <div class="foot"></div>
+     <div class="footer">
+         <myfoot></myfoot>
+     </div>
     </div>
 </template>
 <script>
@@ -23,4 +27,15 @@ export default {
 </script>
 <style lang="scss" scoped>
 
+
+    .foot{
+        width: 100%;
+        height: 479px;
+    }
+    .footer{
+        width: 100%;
+        height: auto;
+        position: relative;
+        bottom: 0;
+    }
 </style>
