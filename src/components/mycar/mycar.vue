@@ -45,7 +45,27 @@
               </div>
           </div>
           <div class="shoplist">
-
+              <div class="mycheck">
+                  <input type="checkbox" >
+              </div>
+              <div class="shopimg">
+                  <img src="../../assets/img/detail-jiu.png" alt="">
+              </div>
+              <div class="shopname">
+                  <p>经典预调果味酒</p>
+                  <h1>JKHLDIO;I</h1>
+                  <p>普通 6瓶装</p>
+              </div>
+              <div class="price">
+                  <span>587</span>
+              </div>
+              <div class="mun">
+                  <p>
+                        <el-button  circle>-</el-button>
+                         <el-button round>1</el-button>
+                          <el-button circle>+</el-button>
+                  </p>
+              </div>
           </div>
         </div>
     </div>
@@ -135,6 +155,12 @@ export default {
        .shoplist{
            height: 150px;
            width: 100%;
+           display: flex;
+           justify-content: space-between;
+           .mycheck{
+               width:80px;
+               height: 100px;
+           }
 
        }
    }
