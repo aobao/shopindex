@@ -5,13 +5,7 @@
                <img src="../../assets/img/mycar.png" alt="">
             </div>
             <div class="step">
-               <el-steps :active="active" finish-status="success" space='100px'>
-                    <el-step title="查看购物车"></el-step>
-                    <el-step title="确认订单"></el-step>
-                    <el-step title="支付订单"></el-step>
-                    <el-step title="订单完成"></el-step>                   
-                </el-steps>
-                <el-button style="margin-top: 12px;" @click="next">下一步</el-button>
+              <img src="../../assets/img/myself.png" alt="">
             </div>
         </div>
         <div class="shopcar">
@@ -28,11 +22,11 @@
                  <span>NAME</span>
               </div>
               <div class="list">
-                   <p>商品数量</p>
+                   <p>商品单价</p>
                  <span>COUNT</span>
               </div>
               <div class="list">
-                   <p>商品单价</p>
+                   <p>商品数量</p>
                  <span>PRICE</span>
               </div>
               <div class="list">
@@ -61,12 +55,64 @@
               </div>
               <div class="mun">
                   <p>
-                        <el-button  circle>-</el-button>
-                         <el-button round>1</el-button>
-                          <el-button circle>+</el-button>
+                        <el-button  circle size="mini">-</el-button>
+                        <el-button round >1</el-button>
+                        <el-button circle size="mini">+</el-button>
                   </p>
               </div>
+              <div class="st">
+                  587
+              </div>
+              <div class="myedit">
+                  <div class="cellc">
+                      删除宝贝
+                  </div>
+              </div>
           </div>
+           <div class="shoplist" v-for='i in 9' :key='i'>
+              <div class="mycheck">
+                  <input type="checkbox" >
+              </div>
+              <div class="shopimg">
+                  <img src="../../assets/img/detail-jiu.png" alt="">
+              </div>
+              <div class="shopname">
+                  <p>经典预调果味酒</p>
+                  <h1>JKHLDIO;I</h1>
+                  <p>普通 6瓶装</p>
+              </div>
+              <div class="price">
+                  <span>587</span>
+              </div>
+              <div class="mun">
+                  <p>
+                        <el-button  circle size="mini">-</el-button>
+                        <el-button round >1</el-button>
+                        <el-button circle size="mini">+</el-button>
+                  </p>
+              </div>
+              <div class="st">
+                  587
+              </div>
+              <div class="myedit">
+                  <div class="cellc">
+                      删除宝贝
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="gopay">
+            <div class="money">
+                <div class="left">
+                    您能一共需要支付
+                </div>
+                <div class="right">
+                    8975元
+                </div>
+            </div>
+            <div class="btn">
+                <el-button type="danger">去结算</el-button>
+            </div>
         </div>
     </div>
 </template>
@@ -75,8 +121,13 @@
 export default {
     data(){
         return{
-             active: 0
+             active: 0,
+             shoplist:[
+                 
+             ],
+             totle:0
         }
+       
     },
     methods: {
       next() {
@@ -106,6 +157,9 @@ export default {
                float: right;
                width: 500px;
                height: 140px;
+               img{
+                   width: 100%;
+               }
            }
        }
        .shopcar{
@@ -113,6 +167,7 @@ export default {
            height: auto;
            border:1px solid #888;
            border-radius: 5px;
+           margin-bottom:15px;
            .title{
                width:100%;
                height: 30px;
@@ -157,11 +212,86 @@ export default {
            width: 100%;
            display: flex;
            justify-content: space-between;
+           text-align: center;
+           border-bottom:1px solid #888;
+           >div{
+               width: 130px;                             
+           }
+           .mycheck,.price,.st,.myedit{
+               display: flex;
+               justify-content: center;
+               align-items: center;
+           }
+           .st{
+               color:#800;
+               font-size:24px;
+           }
+           .shopimg{
+               margin-top:15px;
+           }
+            .shopname{
+               display: flex;
+               flex-direction: column;
+               justify-content: space-around;
+           }
+           .mun{
+               width: 200px;
+               line-height: 140px;
+           }
            .mycheck{
                width:80px;
-               height: 100px;
+               height: 150px;
            }
+             .cellc{
+                 width: 100px;
+                 height: 30px;
+                 line-height: 30px;
+                 border-radius: 20px;
+                 color:#fff;
+                 background: #B0B1C3;
+             }
 
+       }
+       .gopay{
+           width: 100%;
+           height: 100px;
+           position: relative;
+           margin-bottom: 15px;
+           .money{
+             width: 200px;
+             position: absolute;
+             top:0;
+             right:0;
+             height: 50px;
+             .left{
+                 width: 100px;
+                 height: 50px;
+                 float: left;
+                 color:#b0b1c3;
+                 position: relative;
+                //  &::after{
+                //    position: absolute;
+                //    content:'/';
+                //    top:0;
+                //    right:-5px;
+                //    font-size: 40px;
+                //    color:#888;
+                //    line-height: 50px;
+                //  }
+             }
+             .right{
+                 float: right;
+                 width: 100px;
+                 font-size: 18px;
+                 color:red;
+                 text-align: right;
+             }
+           }
+           .btn{
+              position: absolute;
+              right:0;
+              bottom:0;
+           }
        }
    }
 </style>
