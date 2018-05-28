@@ -93,7 +93,7 @@ export default {
     .myfoot {
         width: 100%;
         height: 479px;
-       position: absolute;
+    //    position: absolute;
        left: 0;
        right: 0;
        bottom: 0;

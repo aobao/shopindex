@@ -379,11 +379,7 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-export default {
-   
-}
-=======
+
   import "../../assets/css/swiper.css"
   import "../../assets/iconfont/iconfont.css"
 
@@ -426,7 +422,7 @@ export default {
       this.y=this.w-409.5;
     }
   }
->>>>>>> 35d7b68bca6916855d99b10493e2da000d18be34
+
 </script>
 
 <style lang="scss" scoped>

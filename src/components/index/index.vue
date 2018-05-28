@@ -3,10 +3,10 @@
      <myhead></myhead>
      <router-view></router-view>
 
-     <div class="foot"></div>
-     <div class="footer">
+     <!-- <div class="foot"></div> -->
+     <!-- <div class="footer"> -->
          <myfoot></myfoot>
-     </div>
+     <!-- </div> -->
     </div>
 </template>
 <script>
