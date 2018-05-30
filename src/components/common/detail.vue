@@ -128,7 +128,6 @@ export default {
             this.mun++;
         },
         addtoshop(){
-            console.log(this.id);
             this.$router.push(`/mycar?id=`+this.id);
         
       }

@@ -11,8 +11,8 @@
             <div class="hover"></div>
           </div>
           <div class="headTopRight">
-            <span><span @click='$router.push("/reglog")'>登录</span><span>/</span>
-            <span @click='$router.push("/regist")'>注册</span></span>
+            <span><span @click='logvis=true'>登录</span><span>/</span>
+            <span @click='regvis=true'>注册</span></span>
             
             <!-- <div class="icon" v-for="item in icon" :key="item.id">
             <router-link :to="item.to">
@@ -53,15 +53,33 @@
       </div>
     </header>
     <div class="box"></div>
+    <template v-if='logvis'>
+       <mylog @click='logvis=false'></mylog>
+        <el-button  class='cal' @click='logvis=false'> 取消</el-button>
+    </template>
+    <template v-if='regvis'>
+      <myreg></myreg>
+        <el-button  class='cal' @click='regvis=false'> 取消</el-button>
+
+    </template>
   </div>
 </template>
 
 
 <script>
+import mylog from '@/components/indexlog/reglog'
+import myreg from '@/components/indexlog/regist'
+
   export default {
     name: 'myhead',
+    components: {
+    'mylog': mylog,
+    'myreg': myreg
+  },
     data(){
       return {
+        logvis:false,
+        regvis:false,
         head: [
           {name: '首页', to: '/mymain', x: '', w: '', id: 1},
           {name: '所有商品', to: '/allproduct', x: '', w: '', id: 2}
@@ -82,6 +100,16 @@
 
 
 <style lang="scss" scoped>
+.cal{
+  position: fixed;
+  width: 80px;
+  height: 40px;
+  top:275px;
+  left:280px;
+  right:0px;
+  margin:0 auto;
+  z-index: 10000;
+}
   header {
     width: 100%;
     height: 92px;

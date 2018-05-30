@@ -65,21 +65,22 @@ export default {
 </script>
 <style lang="scss" scoped>
     .cover{
-        width: 100%;
-        height: 1000px;
-        background: rgba(0, 0, 0, 0.33);
+        // width: 100%;
+        // height: 1000px;
+        background: rgba(0, 0, 0, 0.14);
         position: relative;
         top: 0;
         margin: auto;
         z-index: 998;
         .tered{
-            position: absolute;
+            position: fixed;;
             top: 137px;
             left: 0;
             right: 0;
             margin: auto;
             width: 500px;
             height: 448px;
+            box-shadow: 0 0 1000px 1000px rgba(0,0,0,0.14);
             /*margin: 137px auto;*/
             z-index: 999;
             overflow: hidden;
