@@ -20,14 +20,14 @@
             </router-link>
             </div> -->
             <div class="icon">
-              <a href="">
+              <router-link to=''>
                 <img src="../../assets/img/head_12.png" alt="">
-              </a>
+              </router-link>
             </div>
             <div class="icon">
-              <a href="">
+              <router-link to="/mycenter">
                 <img src="../../assets/img/head_14.png" alt="">
-              </a>
+              </router-link>
             </div>
             <div class="icon">
               <a href="">
@@ -64,10 +64,10 @@
       return {
         head: [
           {name: '首页', to: '/mymain', x: '', w: '', id: 1},
-          {name: '所有商品', to: '/allproduct', x: '', w: '', id: 2},
-          {name: '红酒', to: '', x: '', w: '', id: 3},
-          {name: '鸡尾酒', to: '', x: '', w: '', id: 4},
-          {name: '啤酒', to: '', x: '', w: '', id: 5},
+          {name: '所有商品', to: '/allproduct', x: '', w: '', id: 2}
+          // {name: '红酒', to: '', x: '', w: '', id: 3},
+          // {name: '鸡尾酒', to: '', x: '', w: '', id: 4},
+          // {name: '啤酒', to: '', x: '', w: '', id: 5},
         ],
         active: 0,
         icon: [
