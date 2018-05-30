@@ -22,7 +22,11 @@
    <div class="detail">
     <div class="left">
            <div class="imgbox">
-            <img src="../../assets/img/detail-jiu.png" alt="">        
+               <el-carousel height="300px">
+                    <el-carousel-item v-for="item in 4" :key="item">
+                      <img src="../../assets/img/detail-jiu.png" alt="" width="200px">                               
+                    </el-carousel-item>
+                </el-carousel>
             </div>  
     </div>
        <div class="right">
@@ -82,10 +86,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.css'
-Vue.use(VueAwesomeSwiper)
 export default {
     data(){
         return{
