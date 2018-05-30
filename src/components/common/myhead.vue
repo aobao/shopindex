@@ -6,17 +6,19 @@
         <div class="headTop">
           <div class="headTopLeft">
             <li v-for="(item,index) in head" :key="item.id" :class="{active:active==index}" @click="active=index">
-              <router-link to="">{{item.name}}</router-link>
+              <router-link :to="item.to">{{item.name}}</router-link>
             </li>
             <div class="hover"></div>
           </div>
           <div class="headTopRight">
-            <span>登录/注册</span>
-            <!--<div class="icon" v-for="item in icon" :key="item.id">-->
-            <!--<router-link :to="item.to">-->
-            <!--<img :src="item.img" alt="">-->
-            <!--</router-link>-->
-            <!--</div>-->
+            <span><span @click='$router.push("/reglog")'>登录</span><span>/</span>
+            <span @click='$router.push("/regist")'>注册</span></span>
+            
+            <!-- <div class="icon" v-for="item in icon" :key="item.id">
+            <router-link :to="item.to">
+            <img src="item.img" alt="">
+            </router-link>
+            </div> -->
             <div class="icon">
               <a href="">
                 <img src="../../assets/img/head_12.png" alt="">
@@ -62,7 +64,7 @@
       return {
         head: [
           {name: '首页', to: '/mymain', x: '', w: '', id: 1},
-          {name: '所有商品', to: '', x: '', w: '', id: 2},
+          {name: '所有商品', to: '/allproduct', x: '', w: '', id: 2},
           {name: '红酒', to: '', x: '', w: '', id: 3},
           {name: '鸡尾酒', to: '', x: '', w: '', id: 4},
           {name: '啤酒', to: '', x: '', w: '', id: 5},

@@ -111,7 +111,7 @@
                 </div>
             </div>
             <div class="btn">
-                <el-button type="danger">去结算</el-button>
+                <el-button type="danger" @click='pay()'>去结算</el-button>
             </div>
         </div>
     </div>
@@ -130,8 +130,8 @@ export default {
        
     },
     methods: {
-      next() {
-        if (this.active++ > 3) this.active = 0;
+      pay(){
+          this.$router.push('/pay');
       }
     }
 }

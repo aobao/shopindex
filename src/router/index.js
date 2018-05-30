@@ -25,7 +25,7 @@ export default new Router({
         {
           path:'myhead',
           name:'myhead',
-          component:myhead
+          component:myhead,
         },
         {
           path:'myfoot',
@@ -43,20 +43,11 @@ export default new Router({
           component:All
         },
         {
-          path:'detail',
+          path:'detail/:id',
           name:'Detail',
           component:Detail
         },
-        {
-          path:'reglog',
-          name:'Reglog',
-          component:Reglog
-        },
-        {
-          path:'regist',
-          name:'regist',
-          component:regist
-        },
+       
         {
           path:'mycar',
           name:'mycar',
@@ -80,6 +71,16 @@ export default new Router({
         }
 
       ]
+    },
+    {
+      path:'/reglog',
+      name:'Reglog',
+      component:Reglog
+    },
+    {
+      path:'/regist',
+      name:'regist',
+      component:regist
     },
 
   ]

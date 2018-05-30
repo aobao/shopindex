@@ -23,17 +23,17 @@
     <div class="left">
            <div class="imgbox">
                <el-carousel height="300px">
-                    <el-carousel-item v-for="item in 4" :key="item">
-                      <img src="../../assets/img/detail-jiu.png" alt="" width="200px">                               
+                    <el-carousel-item v-for="(item,index) in bannerdata" :key="index" >
+                      <img :src="item.url" alt="" height='300px'>                               
                     </el-carousel-item>
                 </el-carousel>
             </div>  
     </div>
        <div class="right">
-           <h1>经典炫彩鸡尾酒套餐预调果味酒 <span>275</span>ml* <span>6</span> 瓶 </h1>
-           <h2>开盖有奖，每一口都是甜甜果香 </h2>
+           <h1>{{arr.name}} <span>{{arr.degra}}</span>ml* <span>{{arr.amount}}</span> 瓶 </h1>
+           <h2>{{arr.title}}</h2> 
            <div class="price">
-               <h1><span>576</span> RMB     <s>原价 <span>987</span>RMB </s> </h1>
+               <h1><span>{{arr.price}}</span> RMB <s>原价 <span>{{arr.offprice}}</span>RMB </s> </h1>
            </div>
            <div class="mun">
                <h1>
@@ -51,8 +51,7 @@
                   <div class="typebox" >
                     <div class="mytype" v-for='(item,n) in typedata' @click='index=n' :key='n' :class='{active:index==n}'>
                         <div class="imgbox"><img :src="item.src" alt=""></div> 
-                       <div class="mylike">{{item.type}}</div>
-                        
+                       <div class="mylike">{{item.type}}</div>                       
                     </div>
                   </div>
                 </div>
@@ -60,8 +59,8 @@
            <div class="addbtn">
                立即购买
            </div>
-           <div class="shopbtn">
-               加入购物车
+           <div class="shopbtn" @click='addtoshop()' >
+             加入购物车
            </div>
        </div>
    </div>
@@ -89,21 +88,18 @@
 export default {
     data(){
         return{
+            id:'',
             mun:1,
+            arr:[],
             typedata:[
                 {src:'./static/img/detail-jiu.png',type:'葡萄口味'},
-                {src:'./static/img/detail-jiu.png',type:'葡萄口味'},
-                {src:'./static/img/detail-jiu.png',type:'葡萄口味'},
-                {src:'./static/img/detail-jiu.png',type:'葡萄口味'},
-                {src:'./static/img/detail-jiu.png',type:'葡萄口味'},
-                {src:'./static/img/detail-jiu.png',type:'葡萄口味'},
-                
+                {src:'./static/img/detail-jiu.png',type:'橘子口味'},
+                {src:'./static/img/detail-jiu.png',type:'香蕉口味'},
+                {src:'./static/img/detail-jiu.png',type:'苹果口味'},
+                {src:'./static/img/detail-jiu.png',type:'柠檬口味'},
+                {src:'./static/img/detail-jiu.png',type:'鹌鹑口味'},               
             ] ,
             bannerdata:[
-                {src:'../static/img/detail-jiu.png'},
-                {src:'../static/img/detail-jiu.png'},
-                {src:'../static/img/detail-jiu.png'},
-                {src:'../static/img/detail-jiu.png'},
                 
             ],
             index:0,
@@ -121,14 +117,32 @@ export default {
     },
     methods:{
         munred(){
-            if(this.mun<0){
+            if(this.mun<=0){
                this.mun=0;
-            }
+            }else{
             this.mun--;
+
+            }
         },
         munadd(){
             this.mun++;
-        }
+        },
+        addtoshop(){
+            console.log(this.id);
+            this.$router.push(`/mycar?id=`+this.id);
+        
+      }
+        
+    },
+   
+    mounted(){
+        let id=this.$route.params.id;
+        this.id=id;
+        fetch(`/api/poduct/detail?id=${id}`).then(res=>res.json()).then(res=>{
+            this.bannerdata=JSON.parse(res[0].img);
+            this.arr=res[0];              
+      })
+
     }
 }
 </script>
@@ -209,7 +223,7 @@ export default {
               width: 400px;
               height: 400px;
               position: absolute;
-              top:-30px;
+              top:0px;
               left:-40px;
               z-index: 100;
               .imgbox{
@@ -229,6 +243,7 @@ export default {
                 height: 410px;
                 right:0;
                 top:0;
+                // margin-top: -30px;
                 padding-left:200px;
                 padding-right:100px;
                 background-color: #fff;

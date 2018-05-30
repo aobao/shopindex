@@ -23,12 +23,39 @@
         <img src="../../assets/img/mainnew_18.png" alt="">
       </div>
       <ul>
-        <li>
+        <li v-for='(item,index) in myfresh' :key='index'>
           <div class="liImg">
             <router-link to="">
-              <img src="../../assets/img/mainnew_41.png" alt="">
+              <img :src="JSON.parse(item.img)[0].url" alt="">
             </router-link>
           </div>
+          <div class="liInfo">
+            <div class="title">
+              <h3>SLIGHTLY DRUNK</h3>
+              <span>SERIES COCKTAILS</span>
+            </div>
+            <h3 class="name">{{item.name}}</h3>
+            <span class="shortDesc">{{item.title}}</span>
+            <p class="con">{{item.con}}</p>
+            <p class="econ">
+             {{item.econ}}</p>
+            <h3 class="amount">{{item.amount}}*{{item.mun}}</h3>
+            <span class="degra">{{item.degra}}</span>
+            <div class="icon">
+              <router-link to="">
+                <i class="iconfont icon-02wodexiaofei"></i>
+              </router-link>
+              <router-link to="">
+                <i class="iconfont icon-gouwuche"></i>
+              </router-link>
+            </div>
+            <div class="price">
+              <span class="left">￥</span>
+              <span class="right">{{item.price}}</span>
+            </div>
+          </div>
+        </li>
+        <!-- <li>
           <div class="liInfo">
             <div class="title">
               <h3>SLIGHTLY DRUNK</h3>
@@ -56,41 +83,12 @@
               <span class="right">299</span>
             </div>
           </div>
-        </li>
-        <li>
-          <div class="liInfo">
-            <div class="title">
-              <h3>SLIGHTLY DRUNK</h3>
-              <span>SERIES COCKTAILS</span>
-            </div>
-            <h3 class="name">微醺系列灌装预调酒</h3>
-            <span class="shortDesc">微醺的小酒感 刚刚好的微甜</span>
-            <p class="con">把新鲜水果融于口中，对于水果的要求，我们近乎苛刻精选当地新鲜水果
-              原产地的榨汁，阳光与自然的果香与伏特加碰撞融合，清澈酸甜的口感在味蕾
-              中来回翻滚，混合刚刚好的酒精度，轻松自在的微醺醉感。</p>
-            <p class="econ">
-              The fresh fruit is melted in the mouth, and for the requirement of the fruit, we have a near harsh selection of local fresh fruit.The origin of the juice, the sun and the natural fruit and vodka collide, a clear and sweet taste in the taste buds the rolling</p>
-            <h3 class="amount">320ml*12听</h3>
-            <span class="degra">3%vol</span>
-            <div class="icon">
-              <router-link to="">
-                <i class="iconfont icon-02wodexiaofei"></i>
-              </router-link>
-              <router-link to="">
-                <i class="iconfont icon-gouwuche"></i>
-              </router-link>
-            </div>
-            <div class="price">
-              <span class="left">￥</span>
-              <span class="right">299</span>
-            </div>
-          </div>
           <div class="liImg">
             <router-link to="">
               <img src="../../assets/img/mainnew_41.png" alt="">
             </router-link>
           </div>
-        </li>
+        </li> -->
       </ul>
       <div class="footer">
         <img src="../../assets/img/mainnew_139.png" alt="">
@@ -182,7 +180,33 @@
         </div>
       </div>
       <ul>
-        <li>
+        <li v-for='item in arr'>
+          <router-link :to=/detail/+item.id>
+            <div class="imgBox">
+              <img :src="JSON.parse(item.img)[0].url" alt="">
+            </div>
+            <div class="info">
+              <h4>{{item.name}}</h4>
+              <h2>{{item.title}}</h2>
+              <h6>SUGARLAND WHISKY</h6>
+              <h5>醇厚温润</h5>
+              <div class="line"></div>
+            </div>
+            <div class="price">
+              <span>￥</span>
+              <h3>{{item.price}}</h3>
+            </div>
+            <div class="icon">
+              <router-link to="">
+                <i class="iconfont icon-02wodexiaofei"></i>
+              </router-link>
+              <router-link to="">
+                <i class="iconfont icon-gouwuche"></i>
+              </router-link>
+            </div>
+          </router-link>
+        </li>
+        <!-- <li>
           <router-link to="">
             <div class="imgBox">
               <img src="../../assets/img/mainfu_13.png" alt="">
@@ -311,33 +335,7 @@
               </router-link>
             </div>
           </router-link>
-        </li>
-        <li>
-          <router-link to="">
-            <div class="imgBox">
-              <img src="../../assets/img/mainfu_13.png" alt="">
-            </div>
-            <div class="info">
-              <h4>格兰菲迪单一纯麦</h4>
-              <h2>舒格兰威士忌</h2>
-              <h6>SUGARLAND WHISKY</h6>
-              <h5>醇厚温润</h5>
-              <div class="line"></div>
-            </div>
-            <div class="price">
-              <span>￥</span>
-              <h3>596</h3>
-            </div>
-            <div class="icon">
-              <router-link to="">
-                <i class="iconfont icon-02wodexiaofei"></i>
-              </router-link>
-              <router-link to="">
-                <i class="iconfont icon-gouwuche"></i>
-              </router-link>
-            </div>
-          </router-link>
-        </li>
+        </li> -->
       </ul>
       <div class="btn">
         <router-link to="">
@@ -412,17 +410,29 @@
           {name:'科学配方',ename:'FORMULA',text1:'确定合作意向',text2:'讨论合作方式'},
           {name:'全程冷链配送',ename:'DISTRIBUTION',text1:'植入模块对接',text2:'云服务和APP'},
           {name:'优质原料',ename:'MATERIAL',text1:'测试产品性能',text2:''},
-        ]
+        ],
+        arr:[],
+        myfresh:[]
       }
+    },
+    created(){
+      fetch("/api/poduct/allproduct").then(res=>res.json()).then(val=>{
+        this.myfresh.push(val[0]);
+        this.myfresh.push(val[1]);
+        val.forEach(value=>{
+          this.arr.push(value);
+        })        
+      });      
     },
     mounted(){
         this.w=document.body.offsetWidth;
         this.w=this.w/2;
       this.x=this.w-920.5;
       this.y=this.w-409.5;
+     
     }
   }
-
+ 
 </script>
 
 <style lang="scss" scoped>
@@ -918,7 +928,8 @@
               box-sizing:border-box;
               > img{
                 display: block;
-                max-width:100%;
+                width:263px;
+                height:200px;
                 margin: auto;
               }
             }
