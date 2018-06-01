@@ -14,7 +14,7 @@
                         <span @click="login()">
                             {{logname}}
                         </span>
-                        <span @click="regist()">
+                        <span class="names" @click="regist()">
                               {{isgname}}
                         </span>
 
@@ -23,7 +23,7 @@
                                 <img src="../../assets/img/head_12.png" alt="">
                             </router-link>
                         </div>
-                        <div class="icon" v-if="logname=='登录成功'">
+                        <div class="icon" v-if="logname==''">
                             <router-link to="/mycenter">
                                 <img src="../../assets/img/head_14.png" alt="">
                             </router-link>
@@ -202,14 +202,14 @@
         methods: {
             //注册登录的出现
             login() {
-                if(this.logname=="登录成功"){
+                if(this.logname==""){
                     return;
                 }
                 this.regists=false
                 this.logins=true
             },
             regist(){
-                if(this.logname=="登录成功"){
+                if(this.logname==""){
                     return;
                 }
                 this.logins=false
@@ -234,7 +234,7 @@
 
                 this.$http.post('/api/amdin/login',obj,{headers:"application/json"}).then(res=>{
                     if(res.body=='ok'){
-                        this.logname="登录成功";
+                        this.logname="";
                         this.isgname=this.loginuser;
                         this.$message({
                             message:"登录成功！",
@@ -284,7 +284,7 @@
         },
         created(){
             if(document.cookie=="login=1"){
-                this.logname="登录成功";
+                this.logname="";
                 this.isgname="admin";
             }
         }
@@ -364,6 +364,14 @@
                         font-size: 12px;
                         color: #525252;
                         cursor: pointer;
+                    }
+                    .names{
+                        display: block;
+                        text-align: center;
+                        width: 80px;
+                        overflow: hidden;
+                        text-overflow:ellipsis;
+                        white-space: nowrap;
                     }
                     > .icon {
                         width: 16px;
