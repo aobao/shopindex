@@ -14,11 +14,9 @@
                     <div class="cancal">
                         <i class="iconfont icon-quxiao2"></i>
                     </div>
-
                     <div class="con_t">
                         <span>欢&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;迎&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</span>
                     </div>
-
                     <div class="user">
                         <div class="input_icon">
                             <img src="../../assets/img/isg-input-user-icon.png" alt="">
@@ -39,7 +37,6 @@
                         <input type="password" name="pass" placeholder="请输入密码" value="">
                         <div class="icon_2"></div>
                     </div>
-
                     <div class="button">
                         <div class="registered">
                             <h3>立即注册</h3>

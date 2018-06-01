@@ -5,13 +5,14 @@
 
      <!-- <div class="foot"></div> -->
      <!-- <div class="footer"> -->
-         <myfoot></myfoot>
+     <myfoot></myfoot>
      <!-- </div> -->
     </div>
 </template>
 <script>
 import myhead from '../common/myhead'
 import myfoot from '../common/myfoot'
+
 export default {
     name:'top',
     components: {
@@ -26,8 +27,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
-
     .foot{
         width: 100%;
         height: 479px;
