@@ -87,7 +87,7 @@
               <div class="mun">
                   <p>
                         <el-button  circle size="mini">-</el-button>
-                        <el-button round >1</el-button>
+                        <el-button circle >1</el-button>
                         <el-button circle size="mini">+</el-button>
                   </p>
               </div>
@@ -129,10 +129,17 @@ export default {
         }
        
     },
+    mounted(){
+        // this.$http.post('/api/amdin/baby',{data:'aa'},{headers:"application/json"
+        // }).then(res=>{
+        //     console.log(res.body);
+        // })
+    },
     methods: {
       pay(){
           this.$router.push('/pay');
       }
+
     }
 }
 </script>

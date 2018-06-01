@@ -748,6 +748,11 @@
               bottom: 0;
               flex-wrap: wrap;
               align-items: flex-end;
+              h2{
+                white-space:nowrap;
+                overflow:hidden;
+                text-overflow:ellipsis;
+              }
               > .icon {
                 height: 37px;
                 width: 80px;
@@ -952,6 +957,9 @@
                 color: #000;
                 width: 100%;
                 text-align: center;
+                white-space:nowrap;
+                overflow:hidden;
+                text-overflow:ellipsis;
               }
               > h6{
                 font-size: 7px;
