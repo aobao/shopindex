@@ -111,7 +111,7 @@
                 </div>
             </div>
             <div class="btn">
-                <el-button type="danger" @click='pay()'>去结算</el-button>
+                <el-button type="danger" @click='pay()'>确认订单</el-button>
             </div>
         </div>
     </div>
@@ -137,7 +137,7 @@ export default {
     },
     methods: {
       pay(){
-          this.$router.push('/pay');
+          this.$router.push('/mybook');
       }
 
     }
