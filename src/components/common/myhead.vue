@@ -23,7 +23,7 @@
                                 <img src="../../assets/img/head_12.png" alt="">
                             </router-link>
                         </div>
-                        <div class="icon">
+                        <div class="icon" v-if="logname=='登录成功'">
                             <router-link to="/mycenter">
                                 <img src="../../assets/img/head_14.png" alt="">
                             </router-link>
@@ -49,8 +49,6 @@
                         </router-link>
                     </div>
                 </div>
-
-
             </div>
         </header>
         <div class="covers" v-if="logins">
@@ -204,10 +202,16 @@
         methods: {
             //注册登录的出现
             login() {
+                if(this.logname=="登录成功"){
+                    return;
+                }
                 this.regists=false
                 this.logins=true
             },
             regist(){
+                if(this.logname=="登录成功"){
+                    return;
+                }
                 this.logins=false
                 this.regists=true
             },
@@ -228,10 +232,22 @@
                 obj.user=loginuser;
                 obj.pass=loginpass;
 
-                this.$http.post('/api/amdin/login','q',{headers:"application/json"}).then(res=>{
-                    console.log(res.body);
+                this.$http.post('/api/amdin/login',obj,{headers:"application/json"}).then(res=>{
+                    if(res.body=='ok'){
+                        this.logname="登录成功";
+                        this.isgname=this.loginuser;
+                        this.$message({
+                            message:"登录成功！",
+                            type: 'success'
+                        });
+                        document.cookie="login=1";
+                        this.logins=false
+                    }else{
+                        this.$message.error("登录失败,请重新登录！");
+                        this.logins=false
+                    }
                 })
-                this.logins=false
+
             },
             //登录立即注册
             checkisg(){
@@ -246,15 +262,30 @@
                 objs.user=isguser;
                 objs.pass=isgpass;
 
-                this.$http.post('/api/amdin/isg',objs,{headers:{"content-type":"application/json"}}).then(res=>{
-                    console.log(res);
+                this.$http.post('/api/amdin/isg',objs,{headers:"application/json"}).then(res=>{
+                   if(res.body=="ok"){
+                       this.$message({
+                           message:"注册成功，请登录！",
+                           type: 'success'
+                       });
+                       this.regists=false
+                       this.logins=true
+                   }else{
+                       this.$message.error("注册失败,请重新注册！");
+                       this.regists=false
+                   }
                 })
-                this.regists=false
             },
             //注册立即登录
             signin(){
                 this.logins=true
                 this.regists=false
+            }
+        },
+        created(){
+            if(document.cookie){
+                this.logname="登录成功";
+                this.isgname="admin";
             }
         }
     }
