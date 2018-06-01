@@ -189,7 +189,7 @@
                     {img: '../../assets/img/head_16.png', to: '', id: 3},
                 ],
                 logname:'登录',
-                isgname:"/注册",
+                isgname:"注册",
                 //绑定登录，注册的input
                 loginuser:'',
                 loginpass:'',
@@ -283,7 +283,7 @@
             }
         },
         created(){
-            if(document.cookie){
+            if(document.cookie=="login=1"){
                 this.logname="登录成功";
                 this.isgname="admin";
             }
