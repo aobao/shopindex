@@ -39,8 +39,7 @@
                    <div class="book">所有订单</div>
                    <div class="book"><router-link to=''>历史订单</router-link></div>
                    <div class="book"><router-link to=''>完成订单</router-link></div>                    
-               </div>
-               
+               </div>               
             </div>
             <div class="arcitle">
                 <div class="title">

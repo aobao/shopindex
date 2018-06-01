@@ -87,7 +87,7 @@
               <div class="mun">
                   <p>
                         <el-button  circle size="mini">-</el-button>
-                        <el-button round >1</el-button>
+                        <el-button circle >1</el-button>
                         <el-button circle size="mini">+</el-button>
                   </p>
               </div>
@@ -111,7 +111,7 @@
                 </div>
             </div>
             <div class="btn">
-                <el-button type="danger">去结算</el-button>
+                <el-button type="danger" @click='pay()'>去结算</el-button>
             </div>
         </div>
     </div>
@@ -129,10 +129,17 @@ export default {
         }
        
     },
+    mounted(){
+        // this.$http.post('/api/amdin/baby',{data:'aa'},{headers:"application/json"
+        // }).then(res=>{
+        //     console.log(res.body);
+        // })
+    },
     methods: {
-      next() {
-        if (this.active++ > 3) this.active = 0;
+      pay(){
+          this.$router.push('/pay');
       }
+
     }
 }
 </script>

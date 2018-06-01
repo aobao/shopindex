@@ -26,19 +26,19 @@
             </div>
         </ul>
         <ul class="con">
-            <li v-for="(val,index) in con"  :key="index" >
+            <li v-for="(val,index) in alldata"  :key="index" >
                 <div class="con_box ">
                     <div class="con_li_img">
-                        <img src="../../assets/img/list_con_img.png" alt="">
+                        <img :src="JSON.parse(val.img)[0].url" alt="">
                     </div>
-                    <h3>橙汁香甜无限火力</h3>
-                    <h2>香橙伏特加</h2>
-                    <h4>VODKA ORANGE</h4>
+                    <h3>{{val.title}}</h3>
+                    <h2>{{val.name}}</h2>
+                    
                     <h5>津津有味</h5>
                     <div class="proce">
-                        <span>￥ 597</span>
+                        <span>￥{{val.price}}</span>
                         <div class="gm">
-                            <router-link to="">
+                            <router-link :to=/detail/+val.id>
                                 <span>立即购买</span>
                             </router-link>
                         </div>
@@ -76,9 +76,19 @@ export default {
             ],
             nav_active:2,
             con:[1,2,3,4,5,6],
-            con_active:2
+            con_active:2,
+            alldata:[]
         }
-    }
+    },
+    created(){
+      fetch("/api/poduct/allproduct").then(res=>res.json()).then(val=>{
+       
+        val.forEach(value=>{
+          this.alldata.push(value);
+        })    
+            
+      });      
+    },
     
 }
 </script>
