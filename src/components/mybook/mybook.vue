@@ -71,7 +71,16 @@
       </div>
 
       <div class="bottom">
-          
+       <div class="b-left">
+         一共<span>7</span>   件
+       </div>
+       
+       <div class="b-right">
+         合计<span>799</span>  RMB
+       </div>
+       <div class="b-btn">
+           <el-button type="danger" @click='$router.push("/pay")'>支付订单</el-button>
+       </div>
       </div>
 
     </div>
@@ -212,6 +221,27 @@ export default {
                   
               }
           }
+       }
+       .bottom{
+           width: 100%;
+           height: 80px;
+           border:#888 2px solid;
+           margin-bottom:20px;
+           display: flex;
+           justify-content: space-around;
+           align-items: center;
+           .b-left{
+               span{
+                   font-size: 18px;
+                   color:#000;
+               }
+           }
+           .b-right{
+               span{
+                   font-size: 20px;
+                   color:red;
+               }
+           }
        }
    }    
 </style>

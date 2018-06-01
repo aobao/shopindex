@@ -13,7 +13,7 @@
             </div>
         </div>
         <ul class="list_nav">
-            <li v-for="(val,index) in nav" :key="index" :class="{nav_active:nav_active==index}" @click="nav_active=index">
+            <li v-for="(val,index) in nav" :key="index" :class="{nav_active:nav_active==index}"  @click='mysort(index)'>
                 <span>
                       {{val.name}}
                 </span>
@@ -78,6 +78,35 @@ export default {
             con:[1,2,3,4,5,6],
             con_active:2,
             alldata:[]
+        }
+    },
+    methods:{
+        mysort(index){
+            this.nav_active=index;
+            switch(this.nav_active){
+               case 1:
+                  this.alldata.sort(function(a,b){
+                      return b.id-a.id;
+                  });
+                  break;
+               case 2:
+               this.alldata.sort(function(a,b){
+                   return b.amount-a.amount;
+               });
+               
+               break;
+             case 0:
+                this.alldata.sort(function(a,b){
+                    return a.id-b.id;
+                });
+                break;
+              case 3:
+              this.alldata.sort(function(a,b){
+                  return b.price-a.price;
+              })  
+
+            }
+            
         }
     },
     created(){
@@ -147,6 +176,7 @@ export default {
                 line-height: 51px;
                 padding-left: 3px;
                 box-sizing: border-box;
+                cursor: pointer;
                 span{
                     color: #757575;
                     font-size: 14px;
