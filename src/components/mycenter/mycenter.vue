@@ -81,7 +81,7 @@
                 </template>
                 
             </div>
-            <div class="page">
+            <!-- <div class="page">
                  <div class="forword">
                      上一页
                  </div>
@@ -97,7 +97,7 @@
                  <div class="next">
                      下一页
                  </div>   
-            </div>
+            </div> -->
          </div>
       </div>
     </div>
@@ -212,6 +212,7 @@ export default {
                float: right;
                width: 620px;
                height: auto;
+               margin-bottom:30px;
                >.title{
                    width: 100%;
                    height: 40px;

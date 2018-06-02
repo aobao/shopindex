@@ -38,7 +38,8 @@
                  <span>EDIT</span>
               </div>
           </div>
-          <div class="shoplist">
+         
+           <div class="shoplist" v-for='i in 5' :key='i'>
               <div class="mycheck">
                   <input type="checkbox" >
               </div>
@@ -55,47 +56,16 @@
               </div>
               <div class="mun">
                   <p>
-                        <el-button  circle size="mini">-</el-button>
-                        <el-button round >1</el-button>
-                        <el-button circle size="mini">+</el-button>
-                  </p>
-              </div>
-              <div class="st">
-                  587
-              </div>
-              <div class="myedit">
-                  <div class="cellc">
-                      删除宝贝
-                  </div>
-              </div>
-          </div>
-           <div class="shoplist" v-for='i in 9' :key='i'>
-              <div class="mycheck">
-                  <input type="checkbox" >
-              </div>
-              <div class="shopimg">
-                  <img src="../../assets/img/detail-jiu.png" alt="">
-              </div>
-              <div class="shopname">
-                  <p>经典预调果味酒</p>
-                  <h1>JKHLDIO;I</h1>
-                  <p>普通 6瓶装</p>
-              </div>
-              <div class="price">
-                  <span>587</span>
-              </div>
-              <div class="mun">
-                  <p>
-                        <el-button  circle size="mini">-</el-button>
+                        <el-button  circle size="mini" @click='reduce(i)'>-</el-button>
                         <el-button circle >1</el-button>
-                        <el-button circle size="mini">+</el-button>
+                        <el-button circle size="mini" @click='add(i)'>+</el-button>
                   </p>
               </div>
               <div class="st">
                   587
               </div>
               <div class="myedit">
-                  <div class="cellc">
+                  <div class="cellc" @click='delbady(i)'>
                       删除宝贝
                   </div>
               </div>
@@ -129,6 +99,15 @@ export default {
         }
        
     },
+    computed:{
+        allprice:function(){
+            let nub=0;
+           this.shoplist.forEach(val => {
+               nub+=val.amount;
+           });
+           return nub;
+        }
+    },
     mounted(){
         // this.$http.post('/api/amdin/baby',{data:'aa'},{headers:"application/json"
         // }).then(res=>{
@@ -138,8 +117,33 @@ export default {
     methods: {
       pay(){
           this.$router.push('/mybook');
-      }
+      },
+ //删除商品     
+      delbady(item){
+        let n=this.shoplist.findIndex(val=>{
+            return val.id==item;
+        });
+        this.shoplist.splice(n,1);
+        // console.log(item,n);
+        // console.log(this.shoplist);
+      },
+//减少个数      
+      reduce(item){
+          let n=this.shoplist.findIndex(val=>{
+              return val.amount==item.amount;
+          });
+          if(this.shoplist[n].amount>0){
+            this.shoplist[n].amount--;
 
+          }
+      },
+//增加个数      
+      add(item){
+         let n=this.shoplist.findIndex(val=>{
+             return val.amount==item.amount;
+         });
+         this.shoplist[n].amount++;
+      }
     }
 }
 </script>
