@@ -337,7 +337,7 @@
                     height: 170px;
                     float: right;
                     img {
-                        widtth: 100%;
+                        width: 100%;
                     }
                 }
             }
