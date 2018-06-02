@@ -49,35 +49,35 @@
                 <div class="ad-title">
                     <img src="../../assets/img/selectadd.png" alt="">
                 </div>
-                <div class="shop-list">
+                <div class="shop-list" >
                     <div class="shop-title">
                         <img src="../../assets/img/tiao.png" alt="">
                     </div>
-                    <div class="list-every">
+                    <div class="list-every" v-for='(item,index) in orderlist' :key='index'>
                         <div class="every-img">
-                            <img src="../../assets/img/detail-jiu.png" alt="">
+                            <img :src="JSON.parse(item.img)[0].url" alt="">
                         </div>
                         <div class="every-name">
-                            酒家何处有
+                            {{item.shopname}}
                         </div>
                         <div class="every-price">
-                            12$
+                            {{item.price}}
                         </div>
                         <div class="every-nub">
-                            21
+                            {{item.amount}}
                         </div>
                         <div class="every-sub">
-                            234
+                            {{item.price*item.amount}}
                         </div>
                     </div>
                 </div>
             </div>
             <div class="bottom">
                 <div class="b-left">
-                    一共<span>7</span> 件
+                    一共<span>{{amount}}</span> 件
                 </div>
                 <div class="b-right">
-                    合计<span>799</span> RMB
+                    合计<span>{{totle}}</span> RMB
                 </div>
                 <div class="b-btn">
                     <el-button type="danger" @click='$router.push("/pay")'>支付订单</el-button>
@@ -162,8 +162,26 @@
                 regionxx: "",
                 code: '',
                 name: '',
-                phone: ''
+                phone: '',
+                orderlist:[]
             }
+        },
+        computed:{
+            totle(){
+                let nub=0;
+                this.orderlist.forEach(val => {                   
+                    nub+=val.price*val.amount;
+                });               
+                return nub;
+            },
+            amount(){
+                 let nub=0;
+                 this.orderlist.forEach(val => {
+                    nub+=Number(val.amount);
+                });
+                return Number(nub);
+            }
+
         },
         methods: {
             //弹出添加地址
@@ -177,12 +195,16 @@
             //添加地址
             updata(){
                 let obj={}
+                let user=sessionStorage.username;
+                
                 //name,phone,area,dareas,coding
                 obj.area=this.region
                 obj.dareas=this.regionxx
                 obj.coding=this.coding
                 obj.name=this.name
                 obj.phone=this.phone
+                obj.user=user
+                
                 if(obj.area==''){
                     this.$message.error('添加失败，请添加所在地址');
                     this.addre=false;
@@ -262,7 +284,7 @@
             },
             //删除地址
             remress(id,index){
-                console.log(id);
+                // console.log(id);
                 this.$http.get(`/api/address/del?id=${id}`).then(res=>{
                     if(res.body=="ok"){
                         this.data.splice(index,1);
@@ -278,8 +300,14 @@
             }
         },
         created() {
-            this.$http.get("/api/address").then(res=>{
+            let user=sessionStorage.username;
+            
+            this.$http.post("/api/address",{user:user},{headers:{'content-type':'application/json'}}).then(res=>{
                 this.data=res.body;
+            })
+            
+            this.$http.post('/api/shopcar/myorder',{data:user},{headers:{'content-type':'application/json'}}).then(res=>{
+                this.orderlist=res.body;
             })
         }
     }
@@ -360,6 +388,9 @@
                                 font-size: 16px;
                             }
                             h2 {
+                                white-space:nowrap; 
+                                overflow:hidden; 
+                                text-overflow:ellipsis;
                             }
                             .card-bot {
                                 .card-left {
@@ -400,6 +431,9 @@
                         align-items: center;
                         .every-img {
                             width: 90px;
+                            img{
+                                width: 100%;
+                            }
                         }
                         .every-name {
                             width: 160px;
