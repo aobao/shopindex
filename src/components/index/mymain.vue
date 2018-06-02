@@ -45,7 +45,7 @@
               <router-link to="">
                 <i class="iconfont icon-02wodexiaofei"></i>
               </router-link>
-              <router-link to="">
+              <router-link :to=/detail/+item.id>
                 <i class="iconfont icon-gouwuche"></i>
               </router-link>
             </div>
@@ -206,136 +206,7 @@
             </div>
           </router-link>
         </li>
-        <!-- <li>
-          <router-link to="">
-            <div class="imgBox">
-              <img src="../../assets/img/mainfu_13.png" alt="">
-            </div>
-            <div class="info">
-              <h4>格兰菲迪单一纯麦</h4>
-              <h2>舒格兰威士忌</h2>
-              <h6>SUGARLAND WHISKY</h6>
-              <h5>醇厚温润</h5>
-              <div class="line"></div>
-            </div>
-            <div class="price">
-              <span>￥</span>
-              <h3>596</h3>
-            </div>
-            <div class="icon">
-              <router-link to="">
-                <i class="iconfont icon-02wodexiaofei"></i>
-              </router-link>
-              <router-link to="">
-                <i class="iconfont icon-gouwuche"></i>
-              </router-link>
-            </div>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="">
-            <div class="imgBox">
-              <img src="../../assets/img/mainfu_13.png" alt="">
-            </div>
-            <div class="info">
-              <h4>格兰菲迪单一纯麦</h4>
-              <h2>舒格兰威士忌</h2>
-              <h6>SUGARLAND WHISKY</h6>
-              <h5>醇厚温润</h5>
-              <div class="line"></div>
-            </div>
-            <div class="price">
-              <span>￥</span>
-              <h3>596</h3>
-            </div>
-            <div class="icon">
-              <router-link to="">
-                <i class="iconfont icon-02wodexiaofei"></i>
-              </router-link>
-              <router-link to="">
-                <i class="iconfont icon-gouwuche"></i>
-              </router-link>
-            </div>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="">
-            <div class="imgBox">
-              <img src="../../assets/img/mainfu_13.png" alt="">
-            </div>
-            <div class="info">
-              <h4>格兰菲迪单一纯麦</h4>
-              <h2>舒格兰威士忌</h2>
-              <h6>SUGARLAND WHISKY</h6>
-              <h5>醇厚温润</h5>
-              <div class="line"></div>
-            </div>
-            <div class="price">
-              <span>￥</span>
-              <h3>596</h3>
-            </div>
-            <div class="icon">
-              <router-link to="">
-                <i class="iconfont icon-02wodexiaofei"></i>
-              </router-link>
-              <router-link to="">
-                <i class="iconfont icon-gouwuche"></i>
-              </router-link>
-            </div>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="">
-            <div class="imgBox">
-              <img src="../../assets/img/mainfu_13.png" alt="">
-            </div>
-            <div class="info">
-              <h4>格兰菲迪单一纯麦</h4>
-              <h2>舒格兰威士忌</h2>
-              <h6>SUGARLAND WHISKY</h6>
-              <h5>醇厚温润</h5>
-              <div class="line"></div>
-            </div>
-            <div class="price">
-              <span>￥</span>
-              <h3>596</h3>
-            </div>
-            <div class="icon">
-              <router-link to="">
-                <i class="iconfont icon-02wodexiaofei"></i>
-              </router-link>
-              <router-link to="">
-                <i class="iconfont icon-gouwuche"></i>
-              </router-link>
-            </div>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="">
-            <div class="imgBox">
-              <img src="../../assets/img/mainfu_13.png" alt="">
-            </div>
-            <div class="info">
-              <h4>格兰菲迪单一纯麦</h4>
-              <h2>舒格兰威士忌</h2>
-              <h6>SUGARLAND WHISKY</h6>
-              <h5>醇厚温润</h5>
-              <div class="line"></div>
-            </div>
-            <div class="price">
-              <span>￥</span>
-              <h3>596</h3>
-            </div>
-            <div class="icon">
-              <router-link to="">
-                <i class="iconfont icon-02wodexiaofei"></i>
-              </router-link>
-              <router-link to="">
-                <i class="iconfont icon-gouwuche"></i>
-              </router-link>
-            </div>
-          </router-link>
-        </li> -->
+       
       </ul>
       <div class="btn">
         <router-link to="">

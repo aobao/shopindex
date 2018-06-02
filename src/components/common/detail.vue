@@ -128,7 +128,27 @@ export default {
             this.mun++;
         },
         addtoshop(){
-            this.$router.push(`/mycar?id=`+this.id);
+            let id=this.$route.params.id;            
+             let user='';
+            if(sessionStorage.username){
+                user=sessionStorage.username;
+                this.$http.post(`/api/shopcar/addshop`,{id:id,amount:this.mun,user:user},{headers:{'content-type':'application/json'}}).then(res=>{
+                if(res.body=='ok'){
+                   this.$message({
+                        message:"添加成功！",
+                        type: 'success'
+                    });
+                 this.$router.push(`/mycar?`);                   
+                }else{
+                    this.$message.error('添加失败');
+                }
+            })
+
+            }else{
+                this.$message.error("请先登录");
+            }      
+           
+
         
       }
         

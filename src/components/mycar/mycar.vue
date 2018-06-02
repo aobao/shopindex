@@ -39,33 +39,33 @@
               </div>
           </div>
          
-           <div class="shoplist" v-for='i in 5' :key='i'>
+           <div class="shoplist" v-for='(item,index) in shoplist' :key='index'>
               <div class="mycheck">
-                  <input type="checkbox" >
+                  <input type="checkbox" @click='additem(item,index)' ref=index>
               </div>
               <div class="shopimg">
-                  <img src="../../assets/img/detail-jiu.png" alt="">
+                  <img :src="JSON.parse(item.img)[0].url" alt="">
               </div>
               <div class="shopname">
-                  <p>经典预调果味酒</p>
+                  <p>{{item.shopname}}</p>
                   <h1>JKHLDIO;I</h1>
                   <p>普通 6瓶装</p>
               </div>
               <div class="price">
-                  <span>587</span>
+                  <span>{{item.price}}</span>
               </div>
               <div class="mun">
                   <p>
-                        <el-button  circle size="mini" @click='reduce(i)'>-</el-button>
-                        <el-button circle >1</el-button>
-                        <el-button circle size="mini" @click='add(i)'>+</el-button>
+                        <el-button  circle size="mini" @click='reduce(item)'>-</el-button>
+                        <el-button circle >{{item.amount}}</el-button>
+                        <el-button circle size="mini" @click='add(item)'>+</el-button>
                   </p>
               </div>
               <div class="st">
-                  587
+                {{item.amount*item.price}}
               </div>
               <div class="myedit">
-                  <div class="cellc" @click='delbady(i)'>
+                  <div class="cellc" @click='delbady(item)'>
                       删除宝贝
                   </div>
               </div>
@@ -77,11 +77,11 @@
                     您能一共需要支付
                 </div>
                 <div class="right">
-                    8975元
+                   {{allprice}}元
                 </div>
             </div>
             <div class="btn">
-                <el-button type="danger" @click='pay()'>确认订单</el-button>
+                <el-button type="danger" @click='pay()'>提交订单</el-button>
             </div>
         </div>
     </div>
@@ -95,7 +95,8 @@ export default {
              shoplist:[
                  
              ],
-             totle:0
+             totle:0,
+             myorder:[]
         }
        
     },
@@ -103,20 +104,53 @@ export default {
         allprice:function(){
             let nub=0;
            this.shoplist.forEach(val => {
-               nub+=val.amount;
+               nub+=val.amount*val.price;
            });
            return nub;
         }
     },
     mounted(){
-        // this.$http.post('/api/amdin/baby',{data:'aa'},{headers:"application/json"
-        // }).then(res=>{
-        //     console.log(res.body);
-        // })
+        let user='';
+        if(sessionStorage.username){
+            user=sessionStorage.username;
+        }else{
+            this.$message.error("请先登录");
+        }       
+       this.$http.post('/api/shopcar/my',{user:user},{headers:{'content-type':'application/json'}}).then(res=>{
+          this.shoplist=res.body;
+        //   console.log(this.shoplist);
+       })
     },
     methods: {
-      pay(){
-          this.$router.push('/mybook');
+        additem(item,index){
+            if(item.flag==1){
+                item.flag=0
+                let n=this.myorder.findIndex(val=>{
+                    return val.id==item.id;
+                })
+                this.myorder.splice(n,1);
+            }else{
+              item.flag=1    
+              this.myorder.push(item);                        
+            }
+        },
+        pay(){
+          let data=JSON.stringify(this.myorder);
+          this.$http.post('/api/shopcar/update',{data:data},{headers:{'content-type':'application/json'}}).then(res=>{
+              if(res.body='ok'){
+                  this.$message({
+                        message:"提交成功！",
+                        type: 'success'
+                    })
+              }else{
+                  this.$message({
+                      message:'无修改',
+                      type:'success'
+                  })
+              }
+            this.$router.push('/mybook');
+              
+          })
       },
  //删除商品     
       delbady(item){
@@ -239,6 +273,12 @@ export default {
            }
            .shopimg{
                margin-top:15px;
+               width: 150px;
+               height: 135px;
+               img{
+                   width: 100%;
+                   height: 110px;
+               }
            }
             .shopname{
                display: flex;
@@ -260,6 +300,7 @@ export default {
                  border-radius: 20px;
                  color:#fff;
                  background: #B0B1C3;
+                 cursor: pointer;
              }
 
        }
