@@ -257,7 +257,7 @@
             //注册
             isgok(){
                 let isguser=this.isguser;
-                let isgpass=this.isguser;
+                let isgpass=this.isgpass;
                 let objs={}
                 objs.user=isguser;
                 objs.pass=isgpass;
