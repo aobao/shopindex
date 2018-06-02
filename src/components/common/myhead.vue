@@ -240,7 +240,7 @@
                             message:"登录成功！",
                             type: 'success'
                         });
-                        document.cookie="login=1";
+                        sessionStorage.username=this.loginuser;
                         this.logins=false
                     }else{
                         this.$message.error("登录失败,请重新登录！");
@@ -283,9 +283,9 @@
             }
         },
         created(){
-            if(document.cookie=="login=1"){
+            if(sessionStorage.username){
                 this.logname="";
-                this.isgname="admin";
+                this.isgname=sessionStorage.username;
             }
         }
     }
