@@ -50,24 +50,24 @@
                     <div class="status">状态<p>STATUS</p></div>
                     <div class="option">操作<p>OPTION</p></div>
                 </div>
-                <template v-for='i in 9'>
-                    <div class="shopli">
+                <template v-for='(item,index) in shoplist'>
+                    <div class="shopli" :key='index'>
                       <div class="li-img">
-                          <img src="../../assets/img/test.gif" alt="">
+                          <img :src="JSON.parse(item.img)[0].url" alt="">
                       </div>
                       <div class="li-info">
-                          <div class="li-info-top">经典鸡尾酒预调果味</div>
+                          <div class="li-info-top">{{item.shopname}}</div>
                           <div class="li-info-en">INFOTHEWAY</div>
                           <div class="li-info-bottom">香橙味  <span>6瓶装</span></div>
                       </div>
                       <div class="li-price">
-                          89
+                          {{item.price}}
                       </div>
                       <div class="li-price li-mun">
-                          57
+                          {{item.amount}}
                       </div>
                       <div class="li-price li-sub">
-                          2861
+                          {{item.price*item.amount}}
                       </div>
                       <div class="li-price li-status">
                           已收货
@@ -81,7 +81,7 @@
                 </template>
                 
             </div>
-            <div class="page">
+            <!-- <div class="page">
                  <div class="forword">
                      上一页
                  </div>
@@ -97,7 +97,7 @@
                  <div class="next">
                      下一页
                  </div>   
-            </div>
+            </div> -->
          </div>
       </div>
     </div>
@@ -105,7 +105,33 @@
 <script>
 
 export default {
-    name:'mycenter'
+    name:'mycenter',
+    data(){
+        return {
+            shoplist:[]
+        }
+    },
+    computed:{
+        subtotle:function(){
+            let nub=0;
+           this.shoplist.forEach(val => {
+               nub+=val.amount*val.price;
+           });
+           return nub;
+        }
+    },
+    mounted(){
+        let user='';
+        if(sessionStorage.username){
+            user=sessionStorage.username;
+        }else{
+            this.$message.error("请先登录");
+        }       
+       this.$http.post('/api/shopcar/order',{user:user},{headers:{'content-type':'application/json'}}).then(res=>{
+          this.shoplist=res.body;
+          
+       })
+    },
 }
 </script>
 <style lang="scss" scoped>
@@ -212,6 +238,7 @@ export default {
                float: right;
                width: 620px;
                height: auto;
+               margin-bottom:30px;
                >.title{
                    width: 100%;
                    height: 40px;
@@ -277,9 +304,11 @@ export default {
                      .li-img{
                          width: 60px;
                          height: 100%;
+                         
                          img{
                              width: 100%;
-                             height: 150px;
+                             margin-top:60%;
+                            //  height: 150px;
                          }
                      }
                      .li-info{
