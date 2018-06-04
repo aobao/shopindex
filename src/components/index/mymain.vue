@@ -422,7 +422,7 @@
             > .icon {
               height: 37px;
               position: absolute;
-              left: 0;
+              right:0;
               bottom: 10px;
               width: 80px;
               display: flex;
